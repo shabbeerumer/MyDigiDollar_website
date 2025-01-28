@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,13 +9,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<string>
      */
     protected $fillable = [
         'name',
@@ -24,13 +22,14 @@ class User extends Authenticatable
         'password',
         'username',
         'wallet_balance',
-        'referral_code'
+        'referral_code',
+        'has_received_bonus'
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -38,23 +37,35 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'wallet_balance' => 'float',
+    ];
 
+    /**
+     * Get the user's package.
+     */
     public function userPackage()
     {
-        return $this->hasOne(user_packages::class);
+        return $this->hasOne(user_packages::class, 'user_id');
     }
 
+    /**
+     * Get all packages for the user.
+     */
+    public function packages()
+    {
+        return $this->hasMany(user_packages::class, 'user_id');
+    }
+
+    /**
+     * Boot function from Laravel.
+     */
     protected static function boot()
     {
         parent::boot();
@@ -62,6 +73,9 @@ class User extends Authenticatable
         static::creating(function ($user) {
             if (empty($user->referral_code)) {
                 $user->referral_code = Str::random(10);
+            }
+            if (!isset($user->wallet_balance)) {
+                $user->wallet_balance = 0;
             }
         });
     }

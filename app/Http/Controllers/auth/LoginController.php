@@ -72,8 +72,8 @@ class LoginController extends Controller
         $password = $request->password;
     
         // Hardcoded credentials for admin
-        $adminEmail = 'mydigidollar1@gmail.com';
-        $adminPassword = 'Gojra179@';
+        $adminEmail = 'Mydigidollar1@gmail.com';
+        $adminPassword = 'Pakistan@';
     
         // Attempt login with provided credentials
         if (Auth::attempt(['email' => $email, 'password' => $password])) {

@@ -40,6 +40,7 @@
                             <th>Amount</th>
                             <th>Method</th>
                             <th>Date</th>
+                            <th>Address</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -51,6 +52,8 @@
                                 <td>${{ number_format($request->withdraw_amount, 2) }}</td>
                                 <td>{{ ucfirst($request->payment_methods) }}</td>
                                 <td>{{ $request->created_at->format('d M Y') }}</td>
+                                <td>{{ $request->address }}</td>
+
                                 <td>
                                     @switch($request->status)
                                         @case('pending')

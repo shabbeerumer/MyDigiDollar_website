@@ -42,7 +42,9 @@
         
     @else
     <h4>
-       <a href="{{route('login')}}" style="color: white ; text-decoration: none"> login / register </a>
+       {{-- <a href="{{route('login')}}" style="color: white ; text-decoration: none"> login / register </a> --}}
+         <a href="{{route('login')}}" style="color: white ; text-decoration: none">login</a>   / <a href="{{route('register')}}" style="color: white ; text-decoration: none">register</a> 
+
     </h4>
         
     @endif

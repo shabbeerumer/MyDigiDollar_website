@@ -178,17 +178,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="widget-wrap">
-                            <div class="widget-button text-center">
-                                <a class="btn btn-sm" href="contact.html">
-                                    <span class="button-text"><button
-                                            style="background-color: #263238; border: 0; color: white; width: 130px; height: 30px;">Contact
-                                            US</button></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                
                 </div>
             </div>
         </section>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,7 +93,7 @@
 		<h2>Withdraw Your Earnings</h2>
 		<div class="text-center" >
 			<p>
-				At <strong>My Digi Dollar</strong>, we’ve made withdrawing your earnings simple and hassle-free.
+				At <strong>My Digi Dollar</strong>, we've made withdrawing your earnings simple and hassle-free.
 				Follow the steps below to access your funds:
 			</p>
 			<ol style="list-style-type: none">
@@ -158,14 +157,13 @@
 				<div class="form-group">
 					<label for="amount">Amount to Withdraw:
 						<small class="text-muted">
-							(Available Balance: ${{ Auth::user()->wallet_balance + (Auth::user()->userPackage?->daily_earning ?? 0) }})
+							(Available Balance: ${{ number_format($availableBalance, 2) }})
 						</small>
-
 					</label>
 					<input type="number" id="amount" name="withdraw_amount" class="form-control" 
 						   placeholder="Enter an amount (min $50, max $10,000)" 
 						   max="10000"
-																min="50">
+						   min="50">
 				</div>
 		
 				<div class="form-group">
@@ -173,7 +171,7 @@
 					<input type="text" id="wallet" name="address" class="form-control" 
 						   placeholder="Enter your wallet address" >
 				</div>
-		
+		          
 				<button type="submit" class="btn btn-primary btn-block">Submit</button>
 			</form>
 		</div>

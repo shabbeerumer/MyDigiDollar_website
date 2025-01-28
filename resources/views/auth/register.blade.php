@@ -232,7 +232,9 @@
     <div class="" style="text-align: center; background-color: #05b620; padding: 10px; color: white" >
       
         <h4>
-            <a href="{{route('login')}}" style="color: white ; text-decoration: none"> login / register </a>
+            {{-- <a href="{{route('login')}}" style="color: white ; text-decoration: none"> login / register </a> --}}
+            <a href="{{route('login')}}" style="color: white ; text-decoration: none">login</a>   / <a href="{{route('register')}}" style="color: white ; text-decoration: none">register</a> 
+
         </h4>
             
     </div>
@@ -242,17 +244,24 @@
             <form action="{{route('processregister')}}" method="post">
                 @csrf
                 <div class="input-group">
-                    <input type="text" name="user_name" placeholder="Enter your username" value="{{ old('user_name') }}">
-                    @error('user_name')
-                        <span style="color: red; display: block; margin-top: 5px;">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="input-group">
                     <input type="text" name="first_name" placeholder="Enter your first name" value="{{ old('first_name') }}">
                     @error('first_name')
                         <span style="color: red; display: block; margin-top: 5px;">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="input-group">
+                    <input type="text" name="last_name" placeholder="Enter your last name" value="{{ old('first_name') }}">
+                    @error('last_name')
+                    <span style="color: red; display: block; margin-top: 5px;">{{ $message }}</span>
+                @enderror
+                </div>
+                <div class="input-group">
+                    <input type="text" name="user_name" placeholder="Enter your username" value="{{ old('user_name') }}">
+                    @error('user_name')
+                        <span style="color: red; display: block; margin-top: 5px;">{{ $message }}</span>
+                    @enderror
+                </div>
+               
                 <div class="input-group">
                     <input type="email" name="email" placeholder="Enter your email" value="{{ old('email') }}">
                     @error('email')
@@ -269,9 +278,12 @@
                     <input type="password" name="password_confirmation" placeholder="Confirm your password">
                 </div>
                 <div class="input-group">
-                    <input type="text" name="last_name" placeholder="Referral code (optional)" value="{{ old('last_name', Auth::check() ? Auth::user()->referral_code : 'nothing') }}">
+                    {{-- <input type="text" name="referral_username" placeholder="Referral code (optional)" value="{{ old('last_name', Auth::check() ? Auth::user()->referral_code : '') }}"> --}}
+                    <input type="text" name="referral_username" placeholder="Referral code (optional)" value="{{ old('referral_username', request('ref_code')) }}">
+
                 </div>
-                <input type="hidden" name="referrer_id" value="{{ Auth::check() ? Auth::id() : 'not found' }}">
+                {{-- <input type="hidden" name="referrer_id" value="{{ Auth::check() ? Auth::id() : 'not found' }}"> --}}
+                <input type="hidden" name="referrer_id" value="{{ old('referrer_id', request('referrer_id')) }}">
                 <button type="submit">Register</button>
             </form>
             <p style="text-align: center; margin-top: 20px;">

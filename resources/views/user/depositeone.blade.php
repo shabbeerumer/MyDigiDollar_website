@@ -300,16 +300,16 @@
                 <label for="package">Package Name</label>
                 <select id="package" name="Package_Name" required>
                     <option value="">Select Package</option>
-                    <option value="Basic">Bronze Starter <span>$100</span></option>
-                    <option value="Standard">Silver Saver <span>$200 </span></option>
-                    <option value="Premium">Golden Opportunity <span>$300</span></option>
-                    <option value="Premium">Plantinum Plus <span>$400</span></option>
-                    <option value="Premium">Diamond Elite <span>$500</span></option>
-                    <option value="Premium">Emerald Advantage <span>$1000 </span></option>
-                    <option value="Premium">Ruby Reward <span>$1500 </span></option>
-                    <option value="Premium">Sapphire Pro <span>$3000 </span></option>
-                    <option value="Premium">Titanium Maste <span>$5000 </span></option>
-                    <option value="Premium">Infinity Legend<span>$10000 </span></option>
+                    <option value="Bronze Starter">Bronze Starter <span>$100</span></option>
+                    <option value="Silver Saver">Silver Saver <span>$200 </span></option>
+                    <option value="Golden Opportunity">Golden Opportunity <span>$300</span></option>
+                    <option value="Plantinum Plus">Plantinum Plus <span>$400</span></option>
+                    <option value="Diamond Elite">Diamond Elite <span>$500</span></option>
+                    <option value="Emerald Advantage">Emerald Advantage <span>$1000 </span></option>
+                    <option value="Ruby Reward">Ruby Reward <span>$1500 </span></option>
+                    <option value="Sapphire Pro">Sapphire Pro <span>$3000 </span></option>
+                    <option value="Titanium Maste">Titanium Maste <span>$5000 </span></option>
+                    <option value="Infinity Legend">Infinity Legend<span>$10000 </span></option>
                 </select>
             </div>
 

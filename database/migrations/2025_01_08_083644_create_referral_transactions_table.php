@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('referrer_id');
             $table->string('referred_user_id');
             $table->string('reward_amount', 10, 2);
+            $table->boolean('first_package_reward')->default(false);
             $table->enum('status', ['pending', 'completed'])->default('pending');
             $table->timestamps();
         });

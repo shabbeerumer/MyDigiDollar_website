@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuth\AdminLoginController;
 use App\Http\Controllers\Admin\AdminAuth\AdminRegisterController;
 use App\Http\Controllers\Admin\Admindashboar\AdminDashboardController;
+use App\Http\Controllers\auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
@@ -47,6 +48,10 @@ Route::post('auth/authenticate', [LoginController::class, 'authenticate'])->name
 // admin auth end
 Route::get('user/resetpass', [ResetPassController::class, 'index'])->name('resetpass');
 Route::get('user/webpage', [WebPageController::class, 'index'])->name('webpage');
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
 
@@ -76,13 +81,19 @@ Route::middleware([authentication::class])->group(function () {
     Route::post('/admin/respond-request/{id}', [PackagesPageController::class, 'respondRequest']);
     Route::post('/user/submitWithdrawRequest', [WithDrawController::class, 'submitWithdrawRequest'])->name('user.submitWithdrawRequest');
     Route::post('/submit-request', [PackagesPageController::class, 'submitRequest'])->name('submit-request');
-
     Route::patch('/admin/requests/{id}', [WebPageController::class, 'updateRequest'])->name('admin.requests.update');
     Route::patch('/admin/withdraw/{id}', [AdminDashboardController::class, 'updateWithdrawRequest'])->name('admin.updateWithdrawRequest');
 });
 
 
 
+Route::get('/debug-package-update', function() {
+    $packages = user_packages::where('status', 'pending')->get();
+    return response()->json([
+        'pending_packages' => $packages,
+        'total_pending' => $packages->count()
+    ]);
+});
 
 // Route::get('/log',function(){
 //  Log::info("this is my log");

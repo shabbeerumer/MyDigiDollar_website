@@ -45,8 +45,9 @@ class RegisterController extends Controller
     {
         // Validate input
         $request->validate([
-            'user_name' => 'required|string|max:255',
             'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'user_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'last_name' => 'required|string|max:255',
@@ -57,11 +58,11 @@ class RegisterController extends Controller
         $referrer = $referrerId ? User::find($referrerId) : null;
     
         $user = new User();
-        $user->username = $request->user_name;
         $user->name = $request->first_name;
+        $user->username = $request->user_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->referral_username = $request->last_name;
+        $user->referral_username = $request->referral_username;
         $user->role = 'user';
         $user->referral_code = Str::random(10);
     

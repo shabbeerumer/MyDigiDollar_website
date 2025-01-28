@@ -378,16 +378,17 @@ use App\Models\WithdrawRequest;
             line-height: inherit
         }
 
-        ol,
+        /* ol,
         ul {
             padding-left: 2rem
-        }
+        } */
 
         dl,
         ol,
         ul {
-            margin-top: 0;
-            margin-bottom: 1rem
+            margin-top: 0 !important;
+            margin-bottom: 1 !important;
+            padding: 0% !important;
         }
 
         ol ol,
@@ -2022,137 +2023,121 @@ use App\Models\WithdrawRequest;
             <div class="container-fluid plr_30 body_white_bg pt_30">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <div class="single_element">
+                        <div class="single_elezment">
                             <div class="quick_activity">
+                                
+                           
                                 <div class="row" style="margin-top: 20px;">
-                                    @if (Auth::user() && $userRequest == null)
+                                    @if ($userRequests->contains('status', 'approved'))
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
+                                            <div class="single_quick_activity p-5" style="color: white;">
+                                                <h4>Total Earning</h4>
+                                                <h3>
+                                                    {{-- $ {{ 
+                                                        $totalDailyEarning  + 
+                                                        ($referralEarnings ?? 0) + 
+                                                        (Auth::user()->has_received_bonus ? 5 : 0) 
+                                                        - 
+                                                        (
+                                                            WithdrawRequest::where('user_id', Auth::id())
+                                                            ->where('status', 'approved')
+                                                            ->where('is_processed', true)
+                                                            ->sum('withdraw_amount'))
+                                                    }} --}}
+                                                    $ {{ 
+                                                        max(0, 
+                                                            $totalDailyEarning + 
+                                                            ($referralEarnings ?? 0) + 
+                                                            (Auth::user()->has_received_bonus ? 5 : 0) - 
+                                                            (WithdrawRequest::where('user_id', Auth::id())
+                                                                ->where('status', 'approved')
+                                                                ->where('is_processed', true)
+                                                                ->sum('withdraw_amount')
+                                                            )
+                                                        )
+                                                    }}
+                                                  
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12">
+                                            <div class="single_quick_activity p-5" style="color: white;">
+                                                <h4>Total Investment</h4>
+                                                <h3>
+                                                    $ {{ $userRequests->where('status', 'approved')->sum('deposit_amount') }}
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12 active">
+                                            <div class="single_quick_activity p-4" style="color: white; height: 90%;">
+                                                <h4>Active Plans</h4>
+                                                @forelse ($userPackages as $package)
+                                                    <h4>{{ $package->package_name }} - ${{ $package->price }}</h4>
+                                                @empty
+                                                    <h3>No Active Plans</h3>
+                                                @endforelse
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-12 active">
+                                            <div class="single_quick_activity p-5" style="color: white;">
+                                                <h4>Withdraw</h4>
+                                                <h3>$ {{ $withdrawRequests->sum('withdraw_amount') }}</h3>
+                                            </div>
+                                        </div>
+                                    @elseif ($userRequests->contains('status', 'pending'))
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <div class="single_quick_activity" style="color: white;">
                                                 <h4>Total Earning</h4>
-                                                <h3>$ {{$user->wallet_balance ?? '0'  }}
-
-													{{-- $ <span class="counter"></span>0.0  --}}
-												</h3>
+                                                <h3>$ {{$user->wallet_balance ?? '0'}}</h3>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <div class="single_quick_activity" style="color: white;">
                                                 <h4>Total Investment</h4>
-
-                                                <h3>$ <span class="counter"></span>0.0 </h3>
+                                                <h3>$ 0.0</h3>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12 active">
                                             <div class="single_quick_activity" style="color: white;">
                                                 <h4>Active Plans</h4>
-                                                <h3>$ <span class="counter"></span>0.0 </h3>
+                                                <h3>$ 0.0</h3>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12 active">
                                             <div class="single_quick_activity" style="color: white;">
                                                 <h4>Withdraw</h4>
-                                                <h3>
-													$ {{ $withdrawRequests->sum('withdraw_amount') }}
-
-													{{-- $ <span class="counter"></span>0.0 --}}
-												 </h3>
+                                                <h3>$ {{ $withdrawRequests->sum('withdraw_amount') }}</h3>
                                             </div>
                                         </div>
-                                    @endif
-                                    @if ($userRequest && $userRequest->status === 'pending')
+                                    @else
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <div class="single_quick_activity" style="color: white;">
                                                 <h4>Total Earning</h4>
-                                                <h3>
-													{{-- $ <span class="counter"></span>0.0  --}}
-													$ {{$user->wallet_balance ?? '0'  }}
-
-												</h3>
+                                                <h3>$ {{$user->wallet_balance ?? '0'}}</h3>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12">
                                             <div class="single_quick_activity" style="color: white;">
                                                 <h4>Total Investment</h4>
-
-                                                <h3>$ <span class="counter"></span>0.0 </h3>
+                                                <h3>$ 0.0</h3>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12 active">
                                             <div class="single_quick_activity" style="color: white;">
                                                 <h4>Active Plans</h4>
-                                                <h3>$ <span class="counter"></span>0.0 </h3>
+                                                <h3>$ 0.0</h3>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-sm-12 active">
                                             <div class="single_quick_activity" style="color: white;">
-                                                <h4>With draw</h4>
-                                                <h3>
-												$	{{ $withdrawRequests->sum('withdraw_amount') }}
-
-													{{-- $ <span class="counter"></span>0.0  --}}
-												</h3>
-                                            </div>
-                                        </div>
-                                    @endif
-                                    @if ($userRequest && $userRequest->status === 'approved')
-                                        <div class="col-lg-3 col-md-3 col-sm-12 ">
-                                            <div class="single_quick_activity p-5" style="color: white;">
-                                                <h4>Total Earning</h4>
-                                                <h3>
-													{{-- $ <span class="counter"></span>0.0  --}}
-												$	{{ $userPackage ? 
-														(($userPackage->daily_earning ?? 0) + 
-														 ($referralEarnings ?? 0) + 
-														 (Auth::user()->has_received_bonus ? 5 : 0) - 
-														 (WithdrawRequest::where('user_id', Auth::id())
-															 ->where('status', 'approved')
-															 ->where('is_processed', true)
-															 ->sum('withdraw_amount'))) 
-														: ((Auth::user()->has_received_bonus ? 5 : 0) + 
-														   ($referralEarnings ?? 0) - 
-														   (WithdrawRequest::where('user_id', Auth::id())
-															   ->where('status', 'approved')
-															   ->where('is_processed', true)
-															   ->sum('withdraw_amount')))
-													}}
-												</h3>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-12">
-                                            <div class="single_quick_activity p-5" style="color: white;">
-                                                <h4>Total Investment</h4>
-
-                                                <h3>
-													{{-- $ <span class="counter"></span>0.0  --}}
-													 $ {{ $userRequest ? $userRequest->deposit_amount : 'N/A' }}
-
-												</h3>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-12 active">
-                                            <div class="single_quick_activity p-4" style="color: white;">
-                                                <h4>Active Plans</h4>
-                                                <h3>
-													{{-- $ <span class="counter"></span>0.0 --}} 
-													{{ $userPackage ? $userPackage->package_name : 'No Active Plan' }}
-
-												</h3>
-												<h3>										  $	{{ $userPackage ? $userPackage->price : 'No Active Plan' }}
-												</h3>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-12 active">
-                                            <div class="single_quick_activity p-5" style="color: white;">
-                                                <h4>With draw</h4>
-                                                <h3>
-													{{-- $ <span class="counter"></span>0.0 --}}
-													$ {{ $withdrawRequests->sum('withdraw_amount') }}
-
-												 </h3>
+                                                <h4>Withdraw</h4>
+                                                <h3>$ {{ $withdrawRequests->sum('withdraw_amount') }}</h3>
                                             </div>
                                         </div>
                                     @endif
                                 </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -2214,9 +2199,12 @@ use App\Models\WithdrawRequest;
                                 style="color: white; font-size: 20px; margin-top: 10px;">Packages</button>
                         </a>
                         <a class="col-lg-5 d-flex justify-content-center pack"
-                            href={{route('subscribe')}} style="text-decoration: none;">
+                            href=
+                            {{-- {{route('subscribe')}} --}}
+                            {{ route('packages') }}
+                             style="text-decoration: none;">
                             <button class="btn"
-                                style="color: white; font-size: 20px; margin-top: 10px;">Subscribe</button>
+                                style="color: white; font-size: 20px; margin-top: 10px;">Boost Your Subscribe</button>
                         </a>
                     </div>
                 </div>

@@ -112,7 +112,7 @@
                         <input type="email" class="form-control" placeholder="Email*" required>
                         <input type="tel" class="form-control" placeholder="Phone Number">
                         <textarea class="form-control" rows="5" placeholder="Message*" required></textarea>
-                        <button type="submit" class="submit-btn">Submit</button>
+                        {{-- <button type="submit" class="submit-btn">Submit</button> --}}
                     </form>
                 </div>
             </div>

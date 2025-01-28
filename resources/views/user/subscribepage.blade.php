@@ -189,7 +189,7 @@
                 <div class="col-md-4 label">Expiration Date</div>
                 <div class="col-md-8">December 29, 2025</div>
             </div>
-            <div class="row align-items-center">
+            {{-- <div class="row align-items-center">
                 <div class="col-md-4 label">Actions</div>
                 <div class="col-md-8">
                     <div class="action-buttons">
@@ -198,7 +198,7 @@
                         <button class="action-btn btn-abandon" onclick="abandonSubscription()">Abandon</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

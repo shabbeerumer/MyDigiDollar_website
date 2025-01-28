@@ -188,10 +188,10 @@ body {
         width: 100%;
     }
 
-    .login-container {
+    /* .login-container {
         margin: 40px 20px;
         padding: 30px 20px;
-    }
+    } */
 
     .footer-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -205,9 +205,9 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .login-container {
+    /* .login-container {
         margin: 30px 15px;
-    }
+    } */
 }
 
    </style>
@@ -235,7 +235,9 @@ body {
     <div class="" style="text-align: center; background-color: #05b620; padding: 10px; color: white" >
       
         <h4 >
-            <a href="{{route('login')}}" style="color: white ; text-decoration: none"> login / register </a>
+            {{-- <a href="{{route('login')}}" style="color: white ; text-decoration: none"> login / register </a> --}}
+            <a href="{{route('login')}}" style="color: white ; text-decoration: none">login</a>   / <a href="{{route('register')}}" style="color: white ; text-decoration: none">register</a> 
+
         </h4>
             
     </div>
@@ -270,6 +272,9 @@ body {
                     Don't have an account? <a href="{{ route('register') }}" style="color: #05b620;">Sign up</a>
                 </p>
             </form>
+            <div class="" style="text-align: center; margin-top: 15px;">
+                <p><a href="{{ route('forget.password.get') }}" style="text-decoration: none; color: blue;">forget your password?</a></p>
+            </div>
         </div>
     </main>
 

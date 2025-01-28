@@ -20,6 +20,7 @@ return new class extends Migration
             $table->dateTime('activation_date')->nullable();
             $table->dateTime('expiration_date')->nullable();
             $table->timestamp('last_earning_update')->nullable();
+            $table->decimal('remaining_balance', 10, 2)->default(0);
             $table->enum('status', ['pending', 'active', 'expired'])->default('pending');
             $table->timestamps();
         });

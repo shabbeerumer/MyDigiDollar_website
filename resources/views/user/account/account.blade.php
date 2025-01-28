@@ -102,14 +102,14 @@
                     <img src="profile-photo.jpg" alt="Profile Photo" class="profile-image">
                     <h4 class="mt-3">{{Auth::user()->name}}</h4>
                     <p class="text-muted">Member since Jan 2024</p>
-                    <a href="userpage.html" class="btn btn-outline-primary mt-3">View Profile</a>
+                    {{-- <a href="userpage.html" class="btn btn-outline-primary mt-3">View Profile</a> --}}
                 </div>
 
                 <div class="nav flex-column nav-pills">
                     <a class="nav-link active" href="#general" data-bs-toggle="pill">Account</a>
-                    <a class="nav-link" href="#password" data-bs-toggle="pill">Change Password</a>
+                    {{-- <a class="nav-link" href="#password" data-bs-toggle="pill">Change Password</a>
                     <a class="nav-link" href="#privacy" data-bs-toggle="pill">Privacy</a>
-                    <a class="nav-link" href="#delete" data-bs-toggle="pill">Delete Account</a>
+                    <a class="nav-link" href="#delete" data-bs-toggle="pill">Delete Account</a> --}}
                 </div>
             </div>
 

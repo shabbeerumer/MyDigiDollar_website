@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="clipboard-write=(self), clipboard-read=(self)">
     <title>Referral Program - MyDigiDollar</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -85,12 +86,18 @@
                     </div>
                     
                     <div class="referral-link mb-4">
-                        <p id="referralLink"> {{ url('auth/register?ref_code=' . Auth::user()->referral_code . '&referrer_id=' . Auth::id()) }}</p>
+                        <p id="referralLink"> 
+                            {{ url('auth/register?ref_code=' . Auth::user()->referral_code . '&referrer_id=' . Auth::id()) }}
+                        </p>
                     </div>
                     
-                    <button id="copyButton" class="btn copy-btn" onclick="copyReferralLink()">
+                    {{-- <button id="copyButton" class="btn copy-btn" onclick="copyReferralLink()">
+                        <i class="fas fa-copy"></i> Copy Referral Link
+                    </button> --}}
+                    <button onclick="copyReferralLink()" class="btn copy-btn">
                         <i class="fas fa-copy"></i> Copy Referral Link
                     </button>
+                    
                     
                  
                 </div>
@@ -101,7 +108,7 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script>
+    {{-- <script>
         function copyReferralLink() {
             const referralLink = document.getElementById('referralLink');
             const linkText = referralLink.innerText;
@@ -120,6 +127,46 @@
                 console.error('Failed to copy: ', err);
                 alert('Failed to copy referral link');
             });
+        }
+    </script> --}}
+    <script>
+        // First check permissions
+        navigator.permissions.query({name: 'clipboard-write'}).then(permissionStatus => {
+            if (permissionStatus.state === 'granted') {
+                console.log('Clipboard write permission granted');
+            } else {
+                console.log('Clipboard write permission denied');
+            }
+        });
+
+        function copyReferralLink() {
+            const referralLink = document.getElementById('referralLink');
+            const linkText = referralLink.innerText;
+            
+            try {
+                navigator.clipboard.writeText(linkText)
+                    .then(() => alert('Copied!'))
+                    .catch(fallbackCopyTextMethod);
+            } catch (err) {
+                fallbackCopyTextMethod();
+            }
+        }
+
+        function fallbackCopyTextMethod() {
+            const textArea = document.createElement("textarea");
+            textArea.value = document.getElementById('referralLink').innerText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                alert('Copied using fallback method');
+            } catch (err) {
+                console.error('Fallback copy failed', err);
+                alert('Copy failed');
+            }
+            
+            document.body.removeChild(textArea);
         }
     </script>
     @endsection
