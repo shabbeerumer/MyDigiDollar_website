@@ -1,66 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MyDigiDollar - Digital Investment Platform
+
+MyDigiDollar is a web-based investment platform where users can subscribe to investment packages and earn daily returns. The platform offers various subscription tiers with different investment amounts and daily earning potentials.
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<img src="public/img/three.svg" alt="MyDigiDollar" width="200">
 </p>
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **User Authentication**: Secure registration and login system
+- **Subscription Packages**: Multiple investment tiers ranging from $100 to $500
+- **Daily Earnings**: Automated daily earnings based on subscription level
+- **Dashboard**: User-friendly dashboard to track investments and earnings
+- **Referral System**: Earn bonuses by referring new users
+- **Withdrawal System**: Request withdrawals of your earned funds
+- **Responsive Design**: Works on desktop and mobile devices
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Available Packages
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Package Name | Investment Amount | Daily Earnings |
+|--------------|-------------------|----------------|
+| Bronze Starter | $100 | $1.50 |
+| Silver Saver | $200 | $3.00 |
+| Golden Opportunity | $300 | $4.50 |
+| Platinum Plus | $400 | $6.00 |
+| Diamond Elite | $500 | $10.00 |
 
-## Learning Laravel
+## Technologies Used
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Laravel**: PHP framework for back-end development
+- **MySQL**: Database management
+- **Bootstrap**: Front-end framework for responsive design
+- **JavaScript/jQuery**: Enhanced user interactions
+- **AOS**: Animate on scroll library for smooth animations
+- **Swiper**: Touch slider for mobile-friendly interfaces
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Installation
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone the repository:
+   ```
+   git clone https://github.com/shabbeerumer/MyDigiDollar_website.git
+   ```
 
-## Laravel Sponsors
+2. Navigate to the project directory:
+   ```
+   cd MyDigiDollar_website
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. Install PHP dependencies:
+   ```
+   composer install
+   ```
 
-### Premium Partners
+4. Install JavaScript dependencies:
+   ```
+   npm install
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5. Create a copy of the .env file:
+   ```
+   cp .env.example .env
+   ```
 
-## Contributing
+6. Generate an application key:
+   ```
+   php artisan key:generate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. Configure your database settings in the .env file.
 
-## Code of Conduct
+8. Run database migrations:
+   ```
+   php artisan migrate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+9. Compile assets:
+   ```
+   npm run dev
+   ```
 
-## Security Vulnerabilities
+10. Start the local development server:
+    ```
+    php artisan serve
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Usage
+
+1. Register for an account on the platform
+2. Log in to your account
+3. Browse available investment packages
+4. Subscribe to your preferred package
+5. Track your earnings on the dashboard
+6. Request withdrawals when desired
+
+## Admin Features
+
+- Approve/reject user subscription requests
+- Process withdrawal requests
+- Monitor all system activities
+- Manage user accounts
+
+## Support
+
+If you encounter any issues or have questions, please contact us at shabbeerumer@gmail.com or use the contact form on our website.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Credits
+
+Developed by [Umer Shabbeer]
