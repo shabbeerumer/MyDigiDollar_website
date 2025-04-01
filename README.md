@@ -39,7 +39,7 @@ MyDigiDollar is a web-based investment platform where users can subscribe to inv
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/MyDigiDollar_website.git
+   git clone https://github.com/shabbeerumer/MyDigiDollar_website.git
    ```
 
 2. Navigate to the project directory:
@@ -102,7 +102,7 @@ MyDigiDollar is a web-based investment platform where users can subscribe to inv
 
 ## Support
 
-If you encounter any issues or have questions, please contact us at support@mydigidollar.com or use the contact form on our website.
+If you encounter any issues or have questions, please contact us at shabbeerumer@gmail.com or use the contact form on our website.
 
 ## License
 
@@ -110,4 +110,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Credits
 
-Developed by [Your Name] - [Your Website/GitHub]
+Developed by [Umer Shabbeer]
