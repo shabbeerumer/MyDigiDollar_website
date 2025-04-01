@@ -1,0 +1,297 @@
+.navbar {
+    background-color: darkslategrey;
+}
+
+#navbarSupportedContent .nav-link {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #ff5733;
+    border-color: #ff5733;
+}
+
+.btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #05b620;
+}
+
+.first {
+    background-image: linear-gradient(90deg, rgba(153, 188, 237, .2), rgba(153, 248, 207, .5), rgba(255, 214, 199, .5)) !important;
+    padding: 23px !important;
+}
+
+.text {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.img img {
+    max-height: 250px;
+    width: auto;
+    object-fit: contain;
+
+}
+
+.welcome {
+    padding: 20px;
+    /* background-color: #f8f9fa; */
+    border-radius: 10px;
+    border-radius: 20px;
+}
+
+.Choose {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.Works {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.text-bg {
+    background-image: linear-gradient(334deg, rgba(35, 49, 174, 0.2), rgba(57, 171, 122, 0.5), rgba(230, 171, 150, 0.5));
+    padding: 20px;
+}
+
+.Choose {
+    background-image: linear-gradient(334deg, rgba(35, 49, 174, 0.2), rgba(57, 171, 122, 0.5), rgba(230, 171, 150, 0.5));
+    padding: 20px;
+}
+
+.Works {
+    background-image: linear-gradient(334deg, rgba(35, 49, 174, 0.2), rgba(57, 171, 122, 0.5), rgba(230, 171, 150, 0.5));
+    padding: 20px;
+}
+
+.shadow-img {
+    filter: drop-shadow(15px 5px 10px rgba(221, 14, 14, 0.3));
+}
+
+
+
+
+
+/* General Reset and Flexbox Alignment */
+.create-sell-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.create-sell-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Image Section */
+.img-wrap {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-wrap img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Text Section */
+.text-wrap {
+    flex: 1 1 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    text-align: left;
+}
+
+h3.title-black-1927B-30 {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    margin-left: 25px;
+}
+
+p.title-grey999-PR-18 {
+    font-size: 18px;
+    color: #999;
+    margin-bottom: 20px;
+    margin-left: 25px;
+
+}
+
+.sign-up-wrap p {
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 25px;
+
+}
+
+.sign-up-wrap p:hover {
+    background-color: #333;
+}
+
+
+.line h3 {
+    font-weight: bold;
+
+}
+
+
+
+
+#page{
+    width:100%;
+    height:100%;
+    position:absolute;
+  }
+  
+  /* Our normalize css */
+  *{
+    margin:0;
+    box-sizing: border-box;
+  }
+  
+  /* Our wrapper */
+  .wrapper{
+    width: 900px;
+    height: 600px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate3d(-50%,-50%,0);
+    overflow:hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+  
+  /* Our image information */
+  .before,
+  .after {
+    width:100%;
+    height:100%;
+    background-repeat:no-repeat;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top:0;
+    left:0;
+    pointer-events:none;
+    overflow: hidden;
+  }
+  
+  .content-image{
+    height:100%;
+  }
+  
+  .after{
+    width:125px;
+  }
+  
+  .scroller{
+    width: 50px;
+    height:50px;
+    position: absolute;
+    left:100px;
+    /* top:50%; */
+    transform:translateY(-50%);
+    border-radius:50%;
+    background-color: transparent;
+    opacity:0.9;
+    pointer-events:auto;
+    cursor: pointer;
+  }
+  
+  .scroller:hover{
+    opacity:1;
+  }
+  
+  .scrolling{
+    pointer-events:none;
+    opacity:1;
+    /* z-index: 1; */
+  }
+  
+  .scroller__thumb{
+    width:100%;
+    height:100%;
+    padding:5px;
+  }
+  
+  .scroller:before,
+  .scroller:after{
+    content:" ";
+    display: block;
+    width: 7px;
+    height: 9999px;
+    position: absolute;
+    left: 50%;
+    margin-left: -3.5px;
+    /* z-index: 30; */
+    transition:0.1s;
+  }
+  .scroller:before{
+    top:100%;
+  }
+  .scroller:after{
+    bottom:100%;
+  }
+  
+  /* If you want to cahnge the colors, make sure you change the fill in the svgs to match */
+  .scroller{
+    border: 5px solid #fff;
+  }
+  .scroller:before,
+  .scroller:after{
+    background: #fff;
+  }
+
+
+
+  .latest .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Agar aap chahte hain ki row ki height image ke sath match ho */
+}
+
+.last {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.last img {
+    margin-top: 10px;
+    max-width: 50%; /* To make the image responsive */
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .last img {
+        max-width: 100%;
+    }
+}
